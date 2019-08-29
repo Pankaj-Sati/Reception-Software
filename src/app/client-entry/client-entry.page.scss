@@ -1,6 +1,7 @@
 
 ion-content {
     --background: #06377a;
+    visibility: visible;
 }
 
 ion-select
@@ -32,10 +33,24 @@ ion-select
         margin-left: 10px;
     }
 
-    @media (min-width: 1000px) {
+    @media (min-width: 700px) {
         img {
             width: 256px;
         }
+
+        .checkinFormClass {
+            padding: 0px 32px;
+        }
+    }
+
+    @media (min-width: 1000px) {
+
+        .checkinFormClass {
+            padding: 0px 160px;
+        }
+    }
+
+    @media (min-width: 1200px) {
 
         .checkinFormClass {
             padding: 0px 256px;
@@ -55,17 +70,14 @@ ion-select
     .item_row {
         width: 100%;
 
-        .item_left
-        {
-            text-align:left;
+        .item_left {
+            text-align: left;
         }
-        
+
         ion-col {
             margin: auto;
         }
     }
-
-
 }
 
 .buttonsRow
@@ -79,5 +91,11 @@ ion-select
     {
         text-align:center;
     }
+}
+
+.blurBackground
+{
+    filter:blur(5px);
+    
 }
 

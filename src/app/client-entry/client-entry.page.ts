@@ -23,6 +23,8 @@ export class ClientEntryPage implements OnInit
 
     public userList: any = [];
 
+    public modalBlurClass = ''; //Class to add blur in the background when modal is shown
+
     public disclaimerAccepted: boolean = false; //Whether user has accepted the disclaimer
 
     public isExistingClient = false; //TO know whether this user is new or existing
@@ -74,7 +76,7 @@ export class ClientEntryPage implements OnInit
         modal.onDidDismiss().then(result =>
         {
             console.log(result);
-
+            this.modalBlurClass = '';
             if (result != undefined && result != null && result.data != undefined)
             {
                 if (result.data.hasAgreed != undefined && result.data.hasAgreed == true)
@@ -97,6 +99,7 @@ export class ClientEntryPage implements OnInit
         });
 
         await modal.present();
+        this.modalBlurClass ='blurBackground'
     }
 
     async submitForm()

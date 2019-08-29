@@ -8,7 +8,7 @@ ion-content {
     margin-top: 50px;
 
     img {
-        width: 144px;
+        width: 300px;
         object-fit: contain;
     }
 
@@ -23,7 +23,7 @@ ion-content {
 
     @media (min-width: 1000px) {
         img {
-            width: 256px;
+            width: 400px;
         }
 
         .checkinFormClass {
