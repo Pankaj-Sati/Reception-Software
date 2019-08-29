@@ -24,3 +24,35 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+ion-toolbar {
+    --background: var(--ion-color-primary);
+    --color: white;
+    min-height: 50px;
+
+    @media (min-width:1000px) {
+        --padding-top: 64px;
+    }
+}
+
+.invalid {
+    border-bottom: 1px solid red;
+}
+
+ion-title {
+    font-size: 30px;
+    text-align:center;
+   
+}
+
+.backButton {
+    --background: #ff5722
+}
+
+.nextButton {
+    --background: #4caf50;
+}
+
+.mandatory_field {
+    color: #F44336;
+}

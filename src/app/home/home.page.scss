@@ -1,1 +1,138 @@
+$CheckinBorderColor: var(--ion-color-secondary);
 
+$blueThemeColor: var(--ion-color-primary);
+$orangeThemeColor: var(--ion-color-secondary);
+
+ion-content {
+   
+}
+
+
+ion-card {
+    width: 90%;
+    height: 90%;
+    background-color: #06377a;
+    z-index: 100;
+    margin: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    overflow: scroll;
+    min-height: 800px;
+}
+
+@media (min-height:500px) and (max-height: 1000px) {
+    ion-card {
+        zoom: 0.73;
+    }
+}
+
+.containerDiv {
+    text-align: center;
+    height: 100%;
+    margin-top: 50px;
+    display: grid;
+
+    p {
+        text-align: center;
+        font-size: 20px;
+        padding: 10px;
+        margin: 25px 0px;
+        color: white;
+    }
+
+    img {
+        width: 70%;
+        object-fit: contain;
+        margin: auto;
+        max-height: 304px;
+    }
+
+    ion-icon {
+        zoom: 5;
+        border: .35px dashed $CheckinBorderColor;
+        border-radius: 50%;
+        padding: 2%;
+        color: $CheckinBorderColor;
+    }
+
+    ion-button {
+        font-size: 1em;
+    }
+
+    @media (min-width: 500px) and (max-width: 800px) {
+        .checkInIcon {
+            zoom: 5;
+        }
+
+        img {
+            width: 50%;
+        }
+
+        ion-button {
+            font-size: 1.4em;
+        }
+    }
+
+    @media (min-width:700px) and (max-width: 1000px) {
+        img {
+            width: 50%;
+        }
+
+        .checkInIcon {
+            zoom: 5;
+        }
+
+        ion-button {
+            font-size: 2em;
+        }
+    }
+
+   
+
+    @media (min-width: 1000px) {
+        .checkInIcon {
+            zoom: 7;
+        }
+
+        ion-button {
+            font-size: 2em;
+        }
+
+        img {
+            width: 50%;
+        }
+    }
+}
+
+//----------Animations START-----------//
+.bg {
+    animation: slide 3s ease-in-out infinite alternate;
+    background-image: linear-gradient(-60deg, #FF9800 50%, #673AB7 50%);
+    bottom: 0;
+    left: -50%;
+    opacity: .5;
+    position: fixed;
+    right: -50%;
+    top: 0;
+    z-index: 1;
+}
+
+.bg2 {
+    animation-direction: alternate-reverse;
+    animation-duration: 4s;
+}
+
+.bg3 {
+    animation-duration: 5s;
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(-25%);
+    }
+
+    100% {
+        transform: translateX(25%);
+    }
+}
+//----------Animations ENDS------------//

@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\client-entry",
+    "\\src\\app\\home",
+    "\\src\\app\\successful",
+    "\\src\\components",
+    "\\src\\components\\disclaimer",
+    "\\src\\models",
+    "\\src\\providers"
+  ],
+  "SelectedNode": "\\src\\global.scss",
+  "PreviewInSolutionExplorer": false
+}

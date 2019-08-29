@@ -1,14 +1,39 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Ionic Blank
+  <ion-toolbar slot="start">
+    <ion-title >
+     Welcome
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+<ion-content overflow-scroll="true">
+
+    <div class="bg"></div>
+    <div class="bg bg2"></div>
+    <div class="bg bg3"></div>
+
+    <ion-card>
+        <div class="containerDiv">
+
+            <ion-row style="align-items:center;">
+                <ion-col>
+                    <img src="assets/imgs/logo.png" />
+                    
+                    <p>At our firm, Dalbir Singh & Associates P.C., we always put clients first. We are dedicated to providing the best legal service and searching for the best results for our clients. Our practice is grounded in giving each client the utmost attention,while using sound judgment to effectively and efficiently resolve matters. We are a small law firm with a rich history of service.</p>
+
+                </ion-col>
+
+            </ion-row>
+
+
+            <ion-row style="margin-top:50px;">
+                <ion-col (click)="fillDetails()">
+                    <ion-icon class="checkInIcon" src="assets/imgs/check_in.svg"></ion-icon>
+                    <br />
+                    <ion-button shape="round" fill="clear">Check In</ion-button>
+
+                </ion-col>
+            </ion-row>
+        </div>
+    </ion-card>
 </ion-content>

@@ -1,0 +1,71 @@
+ion-content {
+    --background: #06377a;
+}
+
+.containerDiv {
+    text-align: center;
+    height: 100%;
+    margin-top: 50px;
+
+    img {
+        width: 144px;
+        object-fit: contain;
+    }
+
+    .checkinFormClass {
+        padding: 10px;
+        margin-top: 50px;
+    }
+
+    b {
+        margin-left: 10px;
+    }
+
+    @media (min-width: 1000px) {
+        img {
+            width: 256px;
+        }
+
+        .checkinFormClass {
+            padding: 0px 256px;
+        }
+    }
+
+    ion-item {
+        text-align: center;
+        --background: transparent;
+        color: white;
+
+        ion-icon {
+            color: white;
+        }
+    }
+
+    .item_row {
+        width: 100%;
+
+        .item_left {
+            text-align: left;
+        }
+
+        ion-col {
+            margin: auto;
+        }
+    }
+
+    h1
+    {
+        color:white;
+        font-size:50px;
+    }
+}
+
+.doneButton {
+    zoom: 1.5;
+    --color: #4caf50;
+}
+
+.doneIcon {
+    zoom: 7;
+    color: #4caf50;
+}

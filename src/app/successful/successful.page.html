@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Check-In Successfull</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="containerDiv">
+
+        <ion-row style="align-items:center;">
+            <ion-col>
+                <img src="assets/imgs/logo.png" />
+
+            </ion-col>
+
+        </ion-row>
+
+        <h1>Check-In Successfull</h1>
+
+
+        <ion-row style="margin-top:50px;">
+            <ion-col (click)="goHome()">
+                <ion-icon class="doneIcon" name="checkmark-circle-outline"></ion-icon>
+                <br />
+                <ion-button class="doneButton" shape="round" fill="clear">Done</ion-button>
+
+            </ion-col>
+        </ion-row>
+    </div>
+</ion-content>

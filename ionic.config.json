@@ -1,5 +1,7 @@
 {
   "name": "DSDReception",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

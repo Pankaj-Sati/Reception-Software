@@ -1,0 +1,181 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Fill Your Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <!--
+          <ion-col size="5" style="background: url(https://scontent.fdel1-2.fna.fbcdn.net/v/t1.0-9/46492529_944213062444847_77…nc_ht=scontent.fdel1-2.fna&oh=0fd50b8…&oe=5DD75B03);
+    background-size: cover;
+    background-position: top;">
+
+            <div style="background-color:#808080;height:100%;">
+
+            </div>
+
+        </ion-col>
+    -->
+    <ion-row>
+
+
+        <ion-col >
+            <div class="containerDiv">
+                <ion-row style="align-items:center;">
+                    <ion-col>
+                        <img src="assets/imgs/logo.png" />
+                    </ion-col>
+                </ion-row>
+
+
+                <form [formGroup]="checkinForm" class="checkinFormClass">
+
+                    <ion-item>
+                        <ion-row class="item_row">
+                            <ion-col class="item_left" size="3">
+                                <ion-icon name="contacts"></ion-icon>
+                                <b>Client Type <span class="mandatory_field">*</span>:</b>
+                            </ion-col>
+                            <ion-col size="9">
+                                <ion-select formControlName="client_type" (ionChange)="clientTypeChange()" interface="popover" placeholder="Select Client Type">
+                                    <ion-select-option value="New Client">New Client</ion-select-option>
+                                    <ion-select-option value="Existing Client">Existing Client</ion-select-option>
+                                </ion-select>
+                            </ion-col>
+                        </ion-row>
+                       
+                       
+                    </ion-item>
+
+                    <ion-item *ngIf="!isExistingClient" [class.invalid]="! checkinForm.controls.case_type.valid && (checkinForm.controls.case_type.dirty || clickedSubmitted)">
+                        <ion-row class="item_row">
+                            <ion-col class="item_left" size="3">
+                                <ion-icon name="git-network"></ion-icon>
+                                <b>Case Type <span class="mandatory_field">*</span>:</b>
+                            </ion-col>
+                            <ion-col size="9">
+                                <ion-select formControlName="case_type" interface="popover" placeholder="Select Case Type">
+                                    <ion-select-option value="Immigration">Immigration</ion-select-option>
+                                    <ion-select-option value="Personal">Personal</ion-select-option>
+                                    <ion-select-option value="Injury">Injury</ion-select-option>
+                                    <ion-select-option value="Criminal">Criminal</ion-select-option>
+                                    <ion-select-option value="Other">Other</ion-select-option>
+                                </ion-select>
+                            </ion-col>
+                        </ion-row>
+                       
+                      
+                    </ion-item>
+
+                    <ion-item [class.invalid]="! checkinForm.controls.name.valid && (checkinForm.controls.name.dirty || clickedSubmitted)">
+                        <ion-row class="item_row">
+                            <ion-col class="item_left" size="3">
+                                <ion-icon name="person"></ion-icon>
+                                <b>Name <span class="mandatory_field">*</span>:</b>
+                            </ion-col>
+                            <ion-col size="9">
+                                <ion-input type="text" formControlName="name" placeholder="Name"></ion-input>
+                            </ion-col>
+                        </ion-row>
+
+                    </ion-item>
+
+                    <ion-item [class.invalid]="! checkinForm.controls.alien_no.valid && (checkinForm.controls.alien_no.dirty || clickedSubmitted)">
+
+                        <ion-row class="item_row">
+                            <ion-col class="item_left" size="3">
+                                <ion-icon name="list"></ion-icon>
+                                <b>Alien Number:</b>
+                            </ion-col>
+                            <ion-col size="9">
+                                <ion-input type="text" formControlName="alien_no" placeholder="Alien Number"></ion-input>
+
+                            </ion-col>
+                        </ion-row>
+                    </ion-item>
+
+                    <ion-item *ngIf="!isExistingClient" [class.invalid]="! checkinForm.controls.email.valid && (checkinForm.controls.email.dirty || clickedSubmitted)">
+
+                        <ion-row class="item_row">
+                            <ion-col class="item_left" size="3">
+                                <ion-icon name="mail"></ion-icon>
+                                <b>Email:</b>
+                            </ion-col>
+                            <ion-col size="9">
+                                <ion-input type="email" formControlName="email" placeholder="Email"></ion-input>
+                            </ion-col>
+                        </ion-row>
+                    </ion-item>
+
+                    <ion-item [class.invalid]="! checkinForm.controls.contact.valid && (checkinForm.controls.contact.dirty || clickedSubmitted)">
+
+                        <ion-row class="item_row">
+                            <ion-col class="item_left" size="3">
+                                <ion-icon name="call"></ion-icon>
+                                <b>Contact <span class="mandatory_field">*</span>:</b>
+                            </ion-col>
+                            <ion-col size="9">
+                                <ion-input type="tel" formControlName="contact" [brmasker]="{mask:'000-000-0000', len:12, type:'num'}" placeholder="Contact"></ion-input>
+
+                            </ion-col>
+                        </ion-row>
+
+                    </ion-item>
+
+                    <ion-item *ngIf="!isExistingClient" [class.invalid]="! checkinForm.controls.address.valid && (checkinForm.controls.address.dirty || clickedSubmitted)">
+
+                        <ion-row class="item_row">
+                            <ion-col class="item_left" size="3">
+                                <ion-icon name="pin"></ion-icon>
+                                <b>Address <span class="mandatory_field">*</span>:</b>
+                            </ion-col>
+                            <ion-col size="9">
+                                <ion-textarea formControlName="address" placeholder="Address"></ion-textarea>
+                            </ion-col>
+                        </ion-row>
+
+                      
+                      
+                    </ion-item>
+
+                    <ion-item *ngIf="isExistingClient" [class.invalid]="! checkinForm.controls.appointment_with.valid && (checkinForm.controls.appointment_with.dirty || clickedSubmitted)">
+
+                        <ion-row class="item_row">
+                            <ion-col class="item_left" size="3">
+                                <ion-icon name="flower"></ion-icon>
+                                <b>Appointment With <span class="mandatory_field">*</span>:</b>
+                            </ion-col>
+                            <ion-col size="9">
+                                <ion-select formControlName="appointment_with" interface="action-sheet" placeholder="Appointment With">
+                                    <ion-select-option *ngFor="let user of userList" value="{{user.id}}">{{user.name}}</ion-select-option>
+                                </ion-select>
+                            </ion-col>
+                        </ion-row>
+
+                    </ion-item>
+
+
+                    <ion-item lines="none" *ngIf="errorMessage!=undefined && errorMessage.length>0">
+                        <p class="errorMsg">{{errorMessage}}</p>
+                    </ion-item>
+
+                    <ion-row style="margin-top:30px;" class="buttonsRow">
+
+                        <ion-col size="5">
+                            <ion-button shape="round" class="backButton" (click)="goBack()">Back<ion-icon slot="start" src="assets/imgs/back.svg"></ion-icon></ion-button>
+                        </ion-col>
+
+                        <ion-col size="7" >
+                            <ion-button [disabled]="!checkinForm.valid" shape="round" class="nextButton" (click)="showDisclaimerForm()"><ion-icon slot="end" name="checkmark-circle-outline"></ion-icon>Confirm Check-In</ion-button>
+                        </ion-col>
+                    </ion-row>
+                </form>
+
+            </div>
+        </ion-col>
+    </ion-row>
+
+
+
+</ion-content>
