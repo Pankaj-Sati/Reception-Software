@@ -1,5 +1,5 @@
 ion-content {
-    --background: #06377a;
+   
 }
 
 .containerDiv {
@@ -10,6 +10,9 @@ ion-content {
     img {
         width: 300px;
         object-fit: contain;
+        background-color: #06377a;
+        border-radius: 50%;
+        padding: 24px;
     }
 
     .checkinFormClass {
@@ -53,10 +56,9 @@ ion-content {
         }
     }
 
-    h1
-    {
-        color:white;
-        font-size:50px;
+    h1 {
+        
+        font-size: 30px;
     }
 }
 

@@ -25,7 +25,7 @@ export class ClientEntryPage implements OnInit
 
     public modalBlurClass = ''; //Class to add blur in the background when modal is shown
 
-    public disclaimerAccepted: boolean = false; //Whether user has accepted the disclaimer
+    public disclaimerAccepted: boolean = true; //Whether user has accepted the disclaimer
 
     public isExistingClient = false; //TO know whether this user is new or existing
 
@@ -67,7 +67,7 @@ export class ClientEntryPage implements OnInit
 
     async showDisclaimerForm()
     {
-        
+        /*
 
         let modal = await this.modalCtrl.create({
             component: DisclaimerComponent
@@ -99,7 +99,9 @@ export class ClientEntryPage implements OnInit
         });
 
         await modal.present();
-        this.modalBlurClass ='blurBackground'
+        this.modalBlurClass ='blurBackground';
+
+        */
     }
 
     async submitForm()
@@ -222,6 +224,20 @@ export class ClientEntryPage implements OnInit
         this.checkinForm.controls.address.updateValueAndValidity();
 
         
+    }
+
+    disclaimerMarkChanged()
+    {
+        
+        if (!this.disclaimerAccepted)
+        {
+            this.presentAlert(this.apiValue.DECLINED_DISCLAIMER_MESSAGE);
+            return;
+        }
+        else
+        {
+            this.errorMessage = '';
+        }
     }
 
     async presentToast(msg,duration=3000)

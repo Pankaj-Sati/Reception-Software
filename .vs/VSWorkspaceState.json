@@ -5,12 +5,13 @@
     "\\src\\app",
     "\\src\\app\\client-entry",
     "\\src\\app\\home",
-    "\\src\\app\\successful",
+    "\\src\\assets",
+    "\\src\\assets\\icon",
     "\\src\\components",
     "\\src\\components\\disclaimer",
     "\\src\\models",
     "\\src\\providers"
   ],
-  "SelectedNode": "\\src\\global.scss",
+  "SelectedNode": "\\src\\components\\disclaimer\\disclaimer.component.ts",
   "PreviewInSolutionExplorer": false
 }

@@ -28,8 +28,8 @@
                     </ion-col>
                 </ion-row>
 
-
-                <form [formGroup]="checkinForm" class="checkinFormClass">
+            <div class="checkinFormClass">
+                <form [formGroup]="checkinForm">
 
                     <ion-item>
                         <ion-row class="item_row">
@@ -44,8 +44,8 @@
                                 </ion-select>
                             </ion-col>
                         </ion-row>
-                       
-                       
+
+
                     </ion-item>
 
                     <ion-item *ngIf="!isExistingClient" [class.invalid]="! checkinForm.controls.case_type.valid && (checkinForm.controls.case_type.dirty || clickedSubmitted)">
@@ -64,8 +64,8 @@
                                 </ion-select>
                             </ion-col>
                         </ion-row>
-                       
-                      
+
+
                     </ion-item>
 
                     <ion-item [class.invalid]="! checkinForm.controls.name.valid && (checkinForm.controls.name.dirty || clickedSubmitted)">
@@ -135,8 +135,8 @@
                             </ion-col>
                         </ion-row>
 
-                      
-                      
+
+
                     </ion-item>
 
                     <ion-item *ngIf="isExistingClient" [class.invalid]="! checkinForm.controls.appointment_with.valid && (checkinForm.controls.appointment_with.dirty || clickedSubmitted)">
@@ -155,22 +155,45 @@
 
                     </ion-item>
 
+                </form>
 
-                    <ion-item lines="none" *ngIf="errorMessage!=undefined && errorMessage.length>0">
-                        <p class="errorMsg">{{errorMessage}}</p>
-                    </ion-item>
+                <ion-item lines="none" *ngIf="errorMessage!=undefined && errorMessage.length>0">
+                    <p class="errorMsg">{{errorMessage}}</p>
+                </ion-item>
 
-                    <ion-row style="margin-top:30px;" class="buttonsRow">
+                <ion-item lines="none" class="disclaimer">
 
-                        <ion-col size="5">
-                            <ion-button shape="round" class="backButton" (click)="goBack()">Back<ion-icon slot="start" src="assets/imgs/back.svg"></ion-icon></ion-button>
-                        </ion-col>
+                    <ion-row>
+                        <ion-col size="1"> <ion-checkbox [checked]="disclaimerAccepted" (ionChange)="disclaimerMarkChanged()" [(ngModel)]="disclaimerAccepted"></ion-checkbox></ion-col>
+                        <ion-col size="11">
 
-                        <ion-col size="7" >
-                            <ion-button [disabled]="!checkinForm.valid" shape="round" class="nextButton" (click)="showDisclaimerForm()"><ion-icon slot="end" name="checkmark-circle-outline"></ion-icon>Confirm Check-In</ion-button>
+                            <p class="disclaimerMsg">
+                                By submitting this form, you agree to receive newsletter, marketing and promotional emails, articles and text messages from Dalbir Singh & Associates regarding your case and in general.
+                            </p>
                         </ion-col>
                     </ion-row>
-                </form>
+
+                </ion-item>
+
+                <ion-row style="margin-top:30px;" class="buttonsRow">
+
+                    <ion-col size="5">
+                        <ion-button shape="round" class="backButton" (click)="goBack()">Back<ion-icon slot="start" src="assets/imgs/back.svg"></ion-icon></ion-button>
+                    </ion-col>
+
+                    <ion-col size="7">
+                        <ion-button [disabled]="!checkinForm.valid || !disclaimerAccepted" shape="round" class="nextButton" (click)="submitForm()"><ion-icon slot="end" name="checkmark-circle-outline"></ion-icon>Confirm Check-In</ion-button>
+                    </ion-col>
+                </ion-row>
+
+                <ion-item lines="none">
+                    <p class="tcMsg">
+                        *Your privacy is very important to us and we do not share any information with 3rd party sites or affiliate companies.
+                        You have te option to opt-out at any time
+                    </p>
+                </ion-item>
+
+              </div>
 
             </div>
         </ion-col>

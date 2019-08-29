@@ -54,5 +54,5 @@ ion-title {
 }
 
 .mandatory_field {
-    color: #F44336;
+    color: var(--errorColor);
 }
