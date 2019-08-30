@@ -5,13 +5,13 @@
     "\\src\\app",
     "\\src\\app\\client-entry",
     "\\src\\app\\home",
-    "\\src\\assets",
-    "\\src\\assets\\icon",
+    "\\src\\app\\successful",
     "\\src\\components",
     "\\src\\components\\disclaimer",
     "\\src\\models",
-    "\\src\\providers"
+    "\\src\\providers",
+    "\\src\\theme"
   ],
-  "SelectedNode": "\\src\\components\\disclaimer\\disclaimer.component.ts",
+  "SelectedNode": "\\package.json",
   "PreviewInSolutionExplorer": false
 }
