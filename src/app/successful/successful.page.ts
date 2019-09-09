@@ -17,7 +17,7 @@ export class SuccessfulPage implements OnInit {
 
     goHome()
     {
-        this.navCtrl.navigateRoot('home');
+        this.navCtrl.navigateBack('home');
     }
 
 }

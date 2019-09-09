@@ -57,8 +57,8 @@
                             <ion-col size="9">
                                 <ion-select formControlName="case_type" interface="popover" placeholder="Select Case Type">
                                     <ion-select-option value="Immigration">Immigration</ion-select-option>
-                                    <ion-select-option value="Personal">Personal</ion-select-option>
-                                    <ion-select-option value="Injury">Injury</ion-select-option>
+                                    <ion-select-option value="Personal Injury">Personal Injury</ion-select-option>
+                                    
                                     <ion-select-option value="Criminal">Criminal</ion-select-option>
                                     <ion-select-option value="Other">Other</ion-select-option>
                                 </ion-select>
@@ -89,7 +89,7 @@
                                 <b>Alien Number:</b>
                             </ion-col>
                             <ion-col size="9">
-                                <ion-input type="text" formControlName="alien_no" placeholder="Alien Number"></ion-input>
+                                <ion-input type="tel" formControlName="alien_no" placeholder="Alien Number"></ion-input>
 
                             </ion-col>
                         </ion-row>
@@ -147,9 +147,11 @@
                                 <b>Appointment With <span class="mandatory_field">*</span>:</b>
                             </ion-col>
                             <ion-col size="9">
-                                <ion-select formControlName="appointment_with" interface="action-sheet" placeholder="Appointment With">
-                                    <ion-select-option *ngFor="let user of userList" value="{{user.id}}">{{user.name}}</ion-select-option>
-                                </ion-select>
+                                <ion-item>
+                                    <ion-select formControlName="appointment_with" interface="action-sheet" placeholder="Appointment With">
+                                        <ion-select-option *ngFor="let user of userList" value="{{user.id}}">{{user.name}}</ion-select-option>
+                                    </ion-select>
+                                </ion-item>
                             </ion-col>
                         </ion-row>
 

@@ -31,7 +31,7 @@ ion-toolbar {
     min-height: 50px;
 
     @media (min-width:1000px) {
-        --padding-top: 64px;
+        --padding-top: 32px;
     }
 }
 
@@ -55,4 +55,8 @@ ion-title {
 
 .mandatory_field {
     color: var(--errorColor);
+}
+
+.action-sheet-group {
+    overflow: auto !important;
 }

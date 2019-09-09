@@ -4,14 +4,12 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\client-entry",
-    "\\src\\app\\home",
-    "\\src\\app\\successful",
     "\\src\\components",
     "\\src\\components\\disclaimer",
     "\\src\\models",
     "\\src\\providers",
     "\\src\\theme"
   ],
-  "SelectedNode": "\\package.json",
+  "SelectedNode": "\\src\\app\\client-entry\\client-entry.page.html",
   "PreviewInSolutionExplorer": false
 }
