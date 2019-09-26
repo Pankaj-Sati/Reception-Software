@@ -58,13 +58,29 @@
                                 <ion-select formControlName="case_type" interface="popover" placeholder="Select Case Type">
                                     <ion-select-option value="Immigration">Immigration</ion-select-option>
                                     <ion-select-option value="Personal Injury">Personal Injury</ion-select-option>
-                                    
+
                                     <ion-select-option value="Criminal">Criminal</ion-select-option>
                                     <ion-select-option value="Other">Other</ion-select-option>
                                 </ion-select>
                             </ion-col>
                         </ion-row>
 
+
+                    </ion-item>
+
+
+                    <ion-item [class.invalid]="! checkinForm.controls.contact.valid && (checkinForm.controls.contact.dirty || clickedSubmitted)">
+
+                        <ion-row class="item_row">
+                            <ion-col class="item_left" size="3">
+                                <ion-icon name="call"></ion-icon>
+                                <b>Contact <span class="mandatory_field">*</span>:</b>
+                            </ion-col>
+                            <ion-col size="9">
+                                <ion-input type="tel" (ionChange)="fetchClientDetails()" formControlName="contact" [brmasker]="{mask:'000-000-0000', len:12, type:'num'}" placeholder="Contact"></ion-input>
+
+                            </ion-col>
+                        </ion-row>
 
                     </ion-item>
 
@@ -108,20 +124,6 @@
                         </ion-row>
                     </ion-item>
 
-                    <ion-item [class.invalid]="! checkinForm.controls.contact.valid && (checkinForm.controls.contact.dirty || clickedSubmitted)">
-
-                        <ion-row class="item_row">
-                            <ion-col class="item_left" size="3">
-                                <ion-icon name="call"></ion-icon>
-                                <b>Contact <span class="mandatory_field">*</span>:</b>
-                            </ion-col>
-                            <ion-col size="9">
-                                <ion-input type="tel" formControlName="contact" [brmasker]="{mask:'000-000-0000', len:12, type:'num'}" placeholder="Contact"></ion-input>
-
-                            </ion-col>
-                        </ion-row>
-
-                    </ion-item>
 
                     <ion-item *ngIf="!isExistingClient" [class.invalid]="! checkinForm.controls.address.valid && (checkinForm.controls.address.dirty || clickedSubmitted)">
 

@@ -6,6 +6,8 @@ import { ValidatorsService } from '../../providers/validators.service';
 import { DisclaimerComponent } from '../../components/disclaimer/disclaimer.component';
 import { ApiValuesService } from '../../providers/apiValues.service';
 import { UserDrowpdownModel } from '../../models/user_dropdown.model';
+import { ClientDetails } from '../../models/client_details.model';
+import { BrMaskDirective, BrMaskModel } from 'br-mask';
 
 
 @Component({
@@ -37,7 +39,8 @@ export class ClientEntryPage implements OnInit
         public apiValue: ApiValuesService,
         public loadingCtrl: LoadingController,
         public http: HttpClient,
-        public alertCtrl: AlertController
+        public alertCtrl: AlertController,
+        
     )
     {
         this.checkinForm = this.formBuilder.group({
@@ -129,7 +132,7 @@ export class ClientEntryPage implements OnInit
         let body = new FormData();
         body.set('client_type', this.checkinForm.controls.client_type.value);
         body.set('name', this.checkinForm.controls.name.value);
-        body.set('contact', this.checkinForm.controls.contact.value);
+        body.set('contact', String(this.checkinForm.controls.contact.value).replace(/\D+/g,''));
         body.set('appointment_with', this.checkinForm.controls.appointment_with.value);
         body.set('case_no', this.checkinForm.controls.alien_no.value); //Alien No. and Case No. are same
         body.set('address', this.checkinForm.controls.address.value);
@@ -176,6 +179,40 @@ export class ClientEntryPage implements OnInit
                     loadingSuccessful = true;
                     loader.dismiss();
                     this.presentAlert('Failure! Server respond with an error.');
+            });
+    }
+
+    fetchClientDetails()
+    {
+        if (!this.checkinForm.controls.contact.valid)
+        {
+            return; //Contact is invalid, we will not fetch data
+        }
+        let contact = String(this.checkinForm.controls.contact.value).replace(/\D+/g, ''); //Replace all non digits with ''
+        let body = new FormData();
+        body.set('contact', contact);
+        this.http.post(this.apiValue.baseAPiUrl + 'get_client_details.php', body)
+            .subscribe(response =>
+            {
+                console.log(response);
+                if (response)
+                {
+                    //We have the response
+                    if ('code' in response)
+                    {
+                        //There is no data but error message along with error code
+
+                    }
+                    else
+                    {
+                        //We have got the data
+                        let clientDetails: any = response;
+                        this.autofillClientDetails(clientDetails);
+                    }
+                }
+            }, error =>
+                {
+                    console.log(error);
             });
     }
 
@@ -238,6 +275,45 @@ export class ClientEntryPage implements OnInit
         {
             this.errorMessage = '';
         }
+    }
+
+    autofillClientDetails(clientData: ClientDetails)
+    {
+        if (clientData != undefined && clientData != null)
+        {
+            //User details are found
+            this.checkinForm.controls.client_type.setValue('Existing Client'); //Set client type to existing
+            this.clientTypeChange(); //Change the validators
+
+            //Set the values
+            this.checkinForm.controls.name.setValue(clientData.name);
+            this.checkinForm.controls.alien_no.setValue(clientData.case_no);
+            this.checkinForm.controls.email.setValue(clientData.email_id);
+            this.checkinForm.controls.contact.setValue(this.maskContact(clientData.contact_no));
+            this.checkinForm.controls.address.setValue(clientData.address);
+            this.checkinForm.controls.case_type.setValue(clientData.case_type);
+            this.checkinForm.controls.appointment_with.setValue(clientData.user_id);
+
+            this.checkinForm.updateValueAndValidity();
+        }
+    }
+
+    maskContact(contact:string)
+    {
+        let maskedContact = '';
+        for (let i = 0; i < contact.length; i++)
+        {
+            if (i == 3 || i == 6)
+            {
+                maskedContact += '-'+contact.charAt(i);
+            }
+            else
+            {
+                maskedContact += contact.charAt(i);
+            }
+            
+        }
+        return maskedContact;
     }
 
     async presentToast(msg,duration=3000)

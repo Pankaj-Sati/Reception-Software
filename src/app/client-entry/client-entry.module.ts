@@ -6,7 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { ClientEntryPage } from './client-entry.page';
-import { BrMaskerModule } from 'br-mask';
+import { BrMaskerModule, BrMaskDirective } from 'br-mask';
 
 const routes: Routes = [
   {
@@ -24,6 +24,8 @@ const routes: Routes = [
         BrMaskerModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ClientEntryPage]
+    declarations: [ClientEntryPage],
+
+
 })
 export class ClientEntryPageModule {}
